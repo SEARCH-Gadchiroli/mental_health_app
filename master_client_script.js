@@ -1,12 +1,12 @@
 // ── Field names ────────────────────────────────────────────────
-const DOCTYPE            = "MH_Chatbot_Consultation_Glific";
-const SOURCE_FIELD       = "ai_diagnosis_output";
+const DOCTYPE = "MH_Chatbot_Consultation_Glific";
+const SOURCE_FIELD = "ai_diagnosis_output";
 const AI_SCREENING_FIELD = "ai_screening_output";
 const AI_DIAGNOSIS_FIELD = "ai_diagnosis_output_1";
 
 // ── Frappe hooks ───────────────────────────────────────────────
 frappe.ui.form.on(DOCTYPE, {
-    refresh: function(frm) {
+    refresh: function (frm) {
         // 1. Auto-populate on refresh
         if (frm.doc.docstatus === 0) {
             populateMHOutputs(frm);
@@ -14,8 +14,8 @@ frappe.ui.form.on(DOCTYPE, {
 
         // 2. Add Similarity Calculation button
         if (frm.doc.docstatus === 0) {
-            frm.add_custom_button(__("Calculate Similarity Scores"), function() {
-                
+            frm.add_custom_button(__("Calculate Similarity Scores"), function () {
+
                 // Safety check: record must be saved
                 if (frm.is_new()) {
                     frappe.msgprint({
@@ -28,24 +28,24 @@ frappe.ui.form.on(DOCTYPE, {
 
                 // Call server
                 frappe.show_alert({ message: __("Contacting OpenAI..."), indicator: "blue" }, 5);
-                
+
                 frappe.call({
                     method: "mental_health.mental_health_department.api.calculate_similarity_scores",
                     args: { docname: frm.doc.name },
                     freeze: true,
-                    freeze_message: __("Translating and Calculating..."),
-                    callback: function(r) {
+                    freeze_message: __("Calculating..."),
+                    callback: function (r) {
                         if (r.exc) {
                             frappe.msgprint({ title: __("API Error"), message: r.exc, indicator: "red" });
                             return;
                         }
-                        
+
                         if (r.message) {
                             const scores = r.message;
                             const updates = {};
                             if (scores.pharmacotherapy_score !== null) updates["pharmacotherapy_similarity_score"] = scores.pharmacotherapy_score;
                             if (scores.diagnosis_score !== null) updates["diagnosis_similarity_score"] = scores.diagnosis_score;
-                            
+
                             if (Object.keys(updates).length) {
                                 frm.set_value(updates).then(() => {
                                     frm.save_or_update();
@@ -66,12 +66,12 @@ frappe.ui.form.on(DOCTYPE, {
     },
 
     // Trigger when the AI text is updated
-    ai_diagnosis_output: function(frm) {
+    ai_diagnosis_output: function (frm) {
         populateMHOutputs(frm);
     },
 
     // 3. Fetch Counselor Name from Master
-    counselor_phone_number: function(frm) {
+    counselor_phone_number: function (frm) {
         if (frm.doc.counselor_phone_number) {
             frappe.db.get_value("MH Counselor", frm.doc.counselor_phone_number, "counselor_name", (r) => {
                 if (r && r.counselor_name) {

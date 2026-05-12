@@ -19,7 +19,8 @@ import urllib.error
 # ──────────────────────────────────────────────────────────────────────────────
 
 def _get_api_key():
-    api_key = frappe.db.get_single_value("MH Settings", "openai_api_key")
+    # Use .get_password() to decrypt the value correctly
+    api_key = frappe.get_doc("MH Settings").get_password("openai_api_key")
     if not api_key:
         frappe.throw(
             "OpenAI API key is not configured. Please set it in MH Settings.",
@@ -62,6 +63,10 @@ def _openai_post(endpoint, payload, api_key):
 # ──────────────────────────────────────────────────────────────────────────────
 
 def _translate_to_english(text, api_key, model):
+    # Skip translation if the text is already English (no Devanagari characters)
+    if not any('\u0900' <= char <= '\u097f' for char in text):
+        return text.strip()
+
     result = _openai_post("chat/completions", {
         "model": model,
         "temperature": 0,
@@ -156,48 +161,3 @@ def calculate_similarity_scores(docname):
     return result
 
 
-# ──────────────────────────────────────────────────────────────────────────────
-# PUBLIC API: Get counselor name from Employee master by phone number
-# ──────────────────────────────────────────────────────────────────────────────
-
-@frappe.whitelist()
-def get_counselor_name(phone_number):
-    """
-    Looks up the counselor's full name from the Employee master
-    using their cell phone number. Falls back to the phone number
-    if no employee record is found.
-
-    Args:
-        phone_number (str): The counselor's phone number as sent to Glific API.
-
-    Returns:
-        str: Employee name if found, else the original phone_number.
-    """
-    if not phone_number:
-        return ""
-
-    # Strip spaces/dashes for a clean match
-    cleaned = phone_number.strip().replace(" ", "").replace("-", "")
-
-    # Try exact match first
-    emp_name = frappe.db.get_value(
-        "Employee",
-        {"cell_number": cleaned, "status": "Active"},
-        "employee_name"
-    )
-
-    # Try with/without country code if not found
-    if not emp_name and cleaned.startswith("+91"):
-        emp_name = frappe.db.get_value(
-            "Employee",
-            {"cell_number": cleaned[3:], "status": "Active"},
-            "employee_name"
-        )
-    elif not emp_name and len(cleaned) == 10:
-        emp_name = frappe.db.get_value(
-            "Employee",
-            {"cell_number": f"+91{cleaned}", "status": "Active"},
-            "employee_name"
-        )
-
-    return emp_name or phone_number

@@ -35,7 +35,7 @@
   "modified": "2026-05-11 02:54:13",
   "name": "MH_Doctor_View",
   "restrict_to_domain": null,
-  "role_name": null,
+  "role_name": "MH_Doctor_View",
   "two_factor_auth": 0
  },
  {
@@ -48,7 +48,7 @@
   "modified": "2026-05-11 02:54:46",
   "name": "MH_External_Reviewer",
   "restrict_to_domain": null,
-  "role_name": null,
+  "role_name": "MH_External_Reviewer",
   "two_factor_auth": 0
  }
 ]

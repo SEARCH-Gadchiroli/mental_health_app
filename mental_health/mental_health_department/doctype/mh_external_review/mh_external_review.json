@@ -1,0 +1,198 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "autoname": "MH-EXT-.YYYY.-.#####",
+ "creation": "2026-05-11 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "consultation",
+  "reviewer",
+  "review_date",
+  "assignment_section",
+  "blind_assignment",
+  "output_1_source",
+  "output_2_source",
+  "output_1_psychoed_text",
+  "col_break_1",
+  "output_2_psychoed_text",
+  "scoring_section",
+  "output_1_psychoed_score",
+  "col_break_2",
+  "output_2_psychoed_score",
+  "reveal_section",
+  "is_revealed",
+  "revealed_output_1_label",
+  "revealed_output_2_label",
+  "reviewer_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "consultation",
+   "fieldtype": "Link",
+   "label": "Consultation",
+   "options": "MH_Chatbot_Consultation_Glific",
+   "reqd": 1,
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "label": "External Reviewer",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1,
+   "fetch_from": "",
+   "default": "__user"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "label": "Review Date",
+   "default": "Today",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "assignment_section",
+   "fieldtype": "Section Break",
+   "label": "Blind Review — Psychoeducation",
+   "description": "Output labels are randomized. You will not know which is AI vs Doctor until scores are submitted."
+  },
+  {
+   "fieldname": "blind_assignment",
+   "fieldtype": "Select",
+   "label": "Assignment",
+   "options": "\nAI_FIRST\nDOCTOR_FIRST",
+   "hidden": 1,
+   "read_only": 1,
+   "description": "Internal field: tracks which output is assigned to slot 1 vs slot 2."
+  },
+  {
+   "fieldname": "output_1_source",
+   "fieldtype": "Data",
+   "label": "Output 1 Source",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "output_2_source",
+   "fieldtype": "Data",
+   "label": "Output 2 Source",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "output_1_psychoed_text",
+   "fieldtype": "Long Text",
+   "label": "Output 1 — Psychoeducation",
+   "read_only": 1,
+   "description": "Read-only. Populated automatically from the consultation record."
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "output_2_psychoed_text",
+   "fieldtype": "Long Text",
+   "label": "Output 2 — Psychoeducation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scoring_section",
+   "fieldtype": "Section Break",
+   "label": "Your Scores (1–10)"
+  },
+  {
+   "fieldname": "output_1_psychoed_score",
+   "fieldtype": "Int",
+   "label": "Output 1 — Psychoeducation Score",
+   "description": "Rate quality of Output 1 psychoeducation from 1 (poor) to 10 (excellent)."
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "output_2_psychoed_score",
+   "fieldtype": "Int",
+   "label": "Output 2 — Psychoeducation Score"
+  },
+  {
+   "fieldname": "reveal_section",
+   "fieldtype": "Section Break",
+   "label": "Reveal (After Submission)"
+  },
+  {
+   "fieldname": "is_revealed",
+   "fieldtype": "Check",
+   "label": "Reveal Sources",
+   "read_only": 1,
+   "description": "Automatically set after the review is submitted."
+  },
+  {
+   "fieldname": "revealed_output_1_label",
+   "fieldtype": "Data",
+   "label": "Output 1 is",
+   "read_only": 1,
+   "depends_on": "eval:doc.is_revealed"
+  },
+  {
+   "fieldname": "revealed_output_2_label",
+   "fieldtype": "Data",
+   "label": "Output 2 is",
+   "read_only": 1,
+   "depends_on": "eval:doc.is_revealed"
+  },
+  {
+   "fieldname": "reviewer_notes",
+   "fieldtype": "Text",
+   "label": "Reviewer Notes (Optional)"
+  }
+ ],
+ "icon": "fa fa-eye",
+ "issingle": 0,
+ "links": [],
+ "modified": "2026-05-11 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Mental_Health_Department",
+ "name": "MH External Review",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 0,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "MH_External_Reviewer",
+   "share": 0,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "is_submittable": 1
+}

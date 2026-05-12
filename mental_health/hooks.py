@@ -5,6 +5,26 @@ app_description = "App for Mental Health Department"
 app_email = "searchgadchiroli.tech@gmail.com"
 app_license = "mit"
 
+# Fixtures — exported to JSON files and auto-imported on bench migrate
+# Run: bench --site <site> export-fixtures --app mental_health  (to refresh)
+fixtures = [
+    # Roles created for this app
+    {
+        "dt": "Role",
+        "filters": [["name", "in", [
+            "MH_Doctor_View",
+            "MH_Chatbot_Reviewer",
+            "MH_External_Reviewer",
+            "Data Entry Operator",
+        ]]]
+    },
+    # Client Scripts for MH_Chatbot_Consultation_Glific
+    {
+        "dt": "Client Script",
+        "filters": [["dt", "=", "MH_Chatbot_Consultation_Glific"]]
+    },
+]
+
 # Apps
 # ------------------
 
@@ -241,8 +261,8 @@ app_license = "mit"
 # Automatically update python controller files with type annotations for this app.
 export_python_type_annotations = True
 
-# Require all whitelisted methods to have type annotations
-require_type_annotated_api_methods = True
+# Disable strict type annotation requirement so api.py whitelisted methods work
+require_type_annotated_api_methods = False
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs

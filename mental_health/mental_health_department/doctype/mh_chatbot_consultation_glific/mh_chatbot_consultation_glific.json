@@ -1,0 +1,545 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:{patient_name}",
+ "creation": "2025-10-06 17:47:13.030608",
+ "custom": 1,
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "section_break_elgm",
+  "patient_name",
+  "counselor_phone_number",
+  "counselor_name",
+  "patient_identification_number",
+  "patient_age",
+  "patient_gender",
+  "patient_village",
+  "patient_district",
+  "patient_taluka",
+  "patient_state",
+  "patient_caste",
+  "patient_type_of_caste",
+  "patient_education",
+  "patient_occupation",
+  "patient_bp",
+  "patient_pulse",
+  "patient_contact_no",
+  "phq_tab",
+  "phq2_section",
+  "phq2_1",
+  "phq2_2_score",
+  "phq9_section",
+  "phq9_1_score",
+  "phq9_2_score",
+  "phq9_3_score",
+  "phq9_4_score",
+  "phq9_5_score",
+  "phq9_6_score",
+  "phq9_7_score",
+  "phq9_8_score",
+  "phq9_9_score",
+  "phq9_10_score",
+  "phq9_11_score",
+  "phq_overall_score",
+  "gad2_tab",
+  "gad2_section",
+  "gad2_1_score",
+  "gad2_2_score",
+  "gad9_section",
+  "gad7_1_score",
+  "gad7_2_score",
+  "gad7_3_score",
+  "gad7_4_score",
+  "gad7_5_score",
+  "gad7_6_score",
+  "gad7_7_score",
+  "gad_overall_score",
+  "padis_tab",
+  "padis1_score",
+  "padis2_score",
+  "padis3_score",
+  "padis4_score",
+  "padis_overall_score",
+  "ai_output_tab",
+  "ai_screening_output",
+  "ai_diagnosis_output_1",
+  "ai_diagnosis_output",
+  "ai_pharmacotherapy_output",
+  "doctors_output_tab",
+  "doctor_screening_output",
+  "doctor_diagnosis_output_1",
+  "doctor_diagnosis_output",
+  "doctor_pharmacotherapy_output",
+  "similarity_scorecalculated_tab",
+  "diagnosis_similarity_score",
+  "pharmacotherapy_similarity_score",
+  "similarity_scorehuman_tab",
+  "human_diagnosis_similarity_score",
+  "human_pharmacotherapy_similarity_score",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "section_break_elgm",
+   "fieldtype": "Section Break",
+   "label": "Patient Details"
+  },
+  {
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient_Name"
+  },
+  {
+   "fieldname": "counselor_phone_number",
+   "fieldtype": "Data",
+   "label": "Counselor_Phone_Number"
+  },
+  {
+   "fieldname": "counselor_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Counselor_Name"
+  },
+  {
+   "fieldname": "patient_identification_number",
+   "fieldtype": "Data",
+   "label": "Patient_Registration_Number"
+  },
+  {
+   "fieldname": "patient_age",
+   "fieldtype": "Int",
+   "label": "Patient_Age"
+  },
+  {
+   "fieldname": "patient_gender",
+   "fieldtype": "Select",
+   "label": "Patient_Gender",
+   "options": "Male\nFemale\nOther"
+  },
+  {
+   "fieldname": "patient_village",
+   "fieldtype": "Data",
+   "label": "Patient_Village"
+  },
+  {
+   "fieldname": "patient_district",
+   "fieldtype": "Data",
+   "label": "Patient_District"
+  },
+  {
+   "fieldname": "patient_taluka",
+   "fieldtype": "Data",
+   "label": "Patient_Taluka"
+  },
+  {
+   "fieldname": "patient_state",
+   "fieldtype": "Data",
+   "label": "Patient_State"
+  },
+  {
+   "fieldname": "patient_caste",
+   "fieldtype": "Data",
+   "label": "Patient_Caste"
+  },
+  {
+   "fieldname": "patient_type_of_caste",
+   "fieldtype": "Data",
+   "label": "Patient_Type of Caste"
+  },
+  {
+   "fieldname": "patient_education",
+   "fieldtype": "Data",
+   "label": "Patient_Education"
+  },
+  {
+   "fieldname": "patient_occupation",
+   "fieldtype": "Data",
+   "label": "Patient_Occupation"
+  },
+  {
+   "fieldname": "patient_bp",
+   "fieldtype": "Data",
+   "label": "Patient_BP"
+  },
+  {
+   "fieldname": "patient_pulse",
+   "fieldtype": "Data",
+   "label": "Patient_Pulse"
+  },
+  {
+   "fieldname": "patient_contact_no",
+   "fieldtype": "Data",
+   "label": "Patient Contact No"
+  },
+  {
+   "fieldname": "phq_tab",
+   "fieldtype": "Tab Break",
+   "label": "PHQ"
+  },
+  {
+   "fieldname": "phq2_section",
+   "fieldtype": "Section Break",
+   "label": "PHQ2"
+  },
+  {
+   "fieldname": "phq2_1",
+   "fieldtype": "Select",
+   "label": "PHQ2_1_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq2_2_score",
+   "fieldtype": "Select",
+   "label": "PHQ2_2_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_section",
+   "fieldtype": "Section Break",
+   "label": "PHQ9"
+  },
+  {
+   "fieldname": "phq9_1_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_1_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_2_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_2_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_3_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_3_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_4_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_4_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_5_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_5_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_6_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_6_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_7_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_7_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_8_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_8_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_9_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_9_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_10_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_10_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq9_11_score",
+   "fieldtype": "Select",
+   "label": "PHQ9_11_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "phq_overall_score",
+   "fieldtype": "Data",
+   "label": "PHQ_Overall_Score"
+  },
+  {
+   "fieldname": "gad2_tab",
+   "fieldtype": "Tab Break",
+   "label": "GAD"
+  },
+  {
+   "fieldname": "gad2_section",
+   "fieldtype": "Section Break",
+   "label": "GAD2"
+  },
+  {
+   "fieldname": "gad2_1_score",
+   "fieldtype": "Select",
+   "label": "GAD2_1_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad2_2_score",
+   "fieldtype": "Select",
+   "label": "GAD2_2_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad9_section",
+   "fieldtype": "Section Break",
+   "label": "GAD9"
+  },
+  {
+   "fieldname": "gad7_1_score",
+   "fieldtype": "Select",
+   "label": "GAD7_1_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad7_2_score",
+   "fieldtype": "Select",
+   "label": "GAD7_2_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad7_3_score",
+   "fieldtype": "Select",
+   "label": "GAD7_3_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad7_4_score",
+   "fieldtype": "Select",
+   "label": "GAD7_4_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad7_5_score",
+   "fieldtype": "Select",
+   "label": "GAD7_5_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad7_6_score",
+   "fieldtype": "Select",
+   "label": "GAD7_6_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad7_7_score",
+   "fieldtype": "Select",
+   "label": "GAD7_7_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "gad_overall_score",
+   "fieldtype": "Data",
+   "label": "GAD_Overall_Score"
+  },
+  {
+   "fieldname": "padis_tab",
+   "fieldtype": "Tab Break",
+   "label": "PADIS"
+  },
+  {
+   "fieldname": "padis1_score",
+   "fieldtype": "Select",
+   "label": "PADIS1_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "padis2_score",
+   "fieldtype": "Select",
+   "label": "PADIS2_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "padis3_score",
+   "fieldtype": "Select",
+   "label": "PADIS3_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "padis4_score",
+   "fieldtype": "Select",
+   "label": "PADIS4_Score",
+   "options": "0\n1\n2\n3"
+  },
+  {
+   "fieldname": "padis_overall_score",
+   "fieldtype": "Data",
+   "label": "PADIS_Overall_Score"
+  },
+  {
+   "fieldname": "ai_output_tab",
+   "fieldtype": "Tab Break",
+   "label": "AI Output"
+  },
+  {
+   "fieldname": "ai_screening_output",
+   "fieldtype": "Small Text",
+   "label": "AI Screening Output"
+  },
+  {
+   "fieldname": "ai_diagnosis_output_1",
+   "fieldtype": "Small Text",
+   "label": "AI Diagnosis Output"
+  },
+  {
+   "fieldname": "ai_diagnosis_output",
+   "fieldtype": "Long Text",
+   "label": "AI_Psycoeducation_Output"
+  },
+  {
+   "fieldname": "ai_pharmacotherapy_output",
+   "fieldtype": "Long Text",
+   "label": "AI_Pharmacotherapy_Output"
+  },
+  {
+   "fieldname": "doctors_output_tab",
+   "fieldtype": "Tab Break",
+   "label": "Doctor's Output"
+  },
+  {
+   "fieldname": "doctor_screening_output",
+   "fieldtype": "Small Text",
+   "label": "Doctor Screening Output"
+  },
+  {
+   "fieldname": "doctor_diagnosis_output_1",
+   "fieldtype": "Small Text",
+   "label": "Doctor Diagnosis Output"
+  },
+  {
+   "fieldname": "doctor_diagnosis_output",
+   "fieldtype": "Long Text",
+   "label": "Doctor_Psycoeducation_Output"
+  },
+  {
+   "fieldname": "doctor_pharmacotherapy_output",
+   "fieldtype": "Long Text",
+   "label": "Doctor_Pharmacotherapy_Output"
+  },
+  {
+   "fieldname": "similarity_scorecalculated_tab",
+   "fieldtype": "Tab Break",
+   "label": "Similarity score(Calculated)"
+  },
+  {
+   "fieldname": "diagnosis_similarity_score",
+   "fieldtype": "Percent",
+   "label": "Psycoeducation_Similarity_Score"
+  },
+  {
+   "fieldname": "pharmacotherapy_similarity_score",
+   "fieldtype": "Percent",
+   "label": "Pharmacotherapy_Similarity_Score"
+  },
+  {
+   "fieldname": "similarity_scorehuman_tab",
+   "fieldtype": "Tab Break",
+   "label": "Similarity score(Human)"
+  },
+  {
+   "fieldname": "human_diagnosis_similarity_score",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Human_Psycoeducation_Similarity_Score"
+  },
+  {
+   "fieldname": "human_pharmacotherapy_similarity_score",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Human_Pharmacotherapy_Similarity_Score"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "MH_Chatbot_Consultation_Glific",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-05-08 09:20:02.573523",
+ "modified_by": "Administrator",
+ "module": "Mental_Health_Department",
+ "name": "MH_Chatbot_Consultation_Glific",
+ "naming_rule": "Expression (old style)",
+ "owner": "antony@projecttech4dev.org",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Data Entry Operator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "MH_Chatbot_Reviewer",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "MH_Doctor_View",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
